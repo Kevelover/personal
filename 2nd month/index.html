@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/icono.png">
+  <title>2 months together 💖 </title>
+  <link rel="stylesheet" href="design.css">
+
+  <style>
+    /* --- NEW: Falling Hearts Background Styles --- */
+    .hearts-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1; /* This is the key: it places the container behind all your content */
+    }
+
+    .heart {
+        position: absolute;
+        top: -10vh;
+        font-size: 20px;
+        opacity: 0;
+        animation: fall 10s infinite linear;
+    }
+
+    @keyframes fall {
+        0% { top: -10vh; opacity: 1; transform: rotate(0deg); }
+        100% { top: 110vh; opacity: 1; transform: rotate(720deg); }
+    }
+    /* --- End of new styles --- */
+
+
+    /* Your original button styles (unchanged) */
+    .back-link-container {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+    }
+
+    .back-link {
+        display: inline-block;
+        padding: 12px 25px;
+        background: linear-gradient(135deg, #fcb6c7, #f88da6);
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-family: 'Segoe UI', sans-serif;
+        border-radius: 50px;
+        transition: transform 0.2s, background 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .back-link:hover {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #f88da6, #fcb6c7);
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- NEW: HTML and SCRIPT for the hearts effect -->
+  <div class="hearts-container" id="hearts-container"></div>
+  <script>
+    // This script creates the hearts dynamically
+    const heartsContainer = document.getElementById('hearts-container');
+    if (heartsContainer) {
+        // You can change this number to have more or fewer hearts
+        const heartsCount = 25; 
+        for (let i = 0; i < heartsCount; i++) {
+            const heart = document.createElement('div'); heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 7) + 's';
+            heart.style.animationDelay = Math.random() * 7 + 's';
+            heart.style.fontSize = (Math.random() * 12 + 18) + 'px';
+            const heartEmojis = ['💖', '💕', '💗', '💝', '💓', '💞'];
+            heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heartsContainer.appendChild(heart);
+        }
+    }
+  </script>
+
+  <!-- Your original content remains untouched -->
+  <div id="hedlinecontainer">
+    <div id="shine">Happy second month together pretty 💞</div>
+  </div>
+  
+  <div class="gallery">
+    <img src="us 2.jpg" alt="usss">
+    <img src="is for you.jpg" alt="this flower is for you pretty">
+    <img src="I LOVE MY GF.jpg" alt="I LOVE YOU">
+    <img src="you are mine.jpg" alt="you are mine hehe">
+    <img src="us.jpg" alt="us again guapa">
+    <img src="marry me.jpg" alt="plss marry me plsss pls plss">
+  </div>
+
+  <div class="back-link-container">
+    <!-- Corrected the link to be consistent with other pages -->
+    <a href="/index.html" class="back-link">⬅️ Back to Main Page</a>
+  </div>
+  
+</body>
+</html>

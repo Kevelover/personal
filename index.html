@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/icono.png">
+<title>Our time together 💝</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+    /* General Body and Page Setup */
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Richer Background */
+    .hearts-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1; 
+        background: linear-gradient(135deg, #fde2e4, #f8cdda);
+    }
+    
+    .hearts-container::before,
+    .hearts-container::after {
+        content: '💖';
+        position: absolute;
+        font-size: 30vw;
+        opacity: 0.1;
+        filter: blur(5px); 
+        z-index: -1;
+    }
+    .hearts-container::before {
+        top: -10vw;
+        left: -10vw;
+    }
+    .hearts-container::after {
+        bottom: -10vw;
+        right: -10vw;
+        transform: rotate(45deg);
+    }
+
+    .heart {
+        position: absolute;
+        top: -10vh;
+        font-size: 20px;
+        opacity: 0;
+        animation: fall 10s infinite linear;
+    }
+
+    @keyframes fall {
+        0% { top: -10vh; opacity: 1; transform: rotate(0deg); }
+        100% { top: 110vh; opacity: 1; transform: rotate(720deg); }
+    }
+
+    h1 {
+        color: #d16ba5;
+        margin: 30px 0;
+        text-align: center;
+        font-size: 2rem;
+        text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+    }
+
+    .banner {
+        width: 100%;
+        max-width: 700px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* New Romantic Font Styling */
+    .intro-text {
+        color: #a1427b;
+        text-align: center;
+        max-width: 600px;
+        margin: 0 0 30px 0;
+        font-size: 1.7rem;
+        font-family: 'Great Vibes', cursive;
+        font-weight: 500;
+    }
+
+    .month-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .month-link {
+        border-radius: 15px;
+        padding: 25px 15px;
+        text-align: center;
+        text-decoration: none;
+        color: #ff758f;
+        font-weight: bold;
+        font-size: 1rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+        background-color: rgba(255,255,255,0.7);
+        backdrop-filter: blur(5px);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .month-link:hover {
+        transform: scale(1.05);
+    }
+
+    /* --- MODIFIED: STRONGER white shadow on the text --- */
+    .month-with-bg {
+        background: transparent;
+        backdrop-filter: none;
+        color: #c95d90;
+        /* The shadow is now centered, larger (8px), and solid white for maximum visibility */
+        text-shadow: 0 0 10px white;
+    }
+
+    /* Layer 1: The sharp image that covers the whole button. */
+    .month-with-bg::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-image: var(--bg-image);
+        background-size: cover;
+        background-position: center;
+        border-radius: 15px;
+        z-index: -2;
+    }
+    
+    /* Layer 2: The blurred white overlay. */
+    .month-with-bg::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(2px);
+        border-radius: 15px;
+        z-index: -1;
+    }
+
+    .birthday-link {
+        background: linear-gradient(135deg, #fcb6c7, #f88da6);
+        color: white;
+        text-shadow: none;
+    }
+    .birthday-link:hover {
+        background: linear-gradient(135deg, #f88da6, #fcb6c7);
+    }
+
+    .locked {
+        background: #ddd;
+        color: #888;
+        cursor: not-allowed;
+        text-shadow: none;
+    }
+    .locked::after {
+        content: '\1F512';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+    }
+    .empty-cell {
+        visibility: hidden;
+    }
+    @media (max-width: 600px) {
+        .month-list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .intro-text {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="hearts-container" id="hearts-container"></div>
+    <script>
+        const container = document.getElementById('hearts-container');
+        const heartsCount = 20; 
+        for (let i = 0; i < heartsCount; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+            const heartEmojis = ['💖', '💕', '💗', '💝', '💓'];
+            heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            container.appendChild(heart);
+        }
+    </script>
+
+    <h1>Our time together 💝</h1>
+
+    <img src="banner.jpg" alt="Banner" class="banner">
+
+    <p class="intro-text">
+        This is gonna be our little corner in the internet, I love you so much pretty 💘
+    </p>
+
+    <div class="month-list">
+        <div class="empty-cell"></div>
+        <a href="birthday/index.html" class="month-link birthday-link">Birthday 💌</a>
+        <div class="empty-cell"></div>
+
+        <a href="1st month/month1.html" class="month-link month-with-bg" style="--bg-image: url('month1.jpg')">1st Month</a>
+        <a href="2nd month/index.html" class="month-link month-with-bg" style="--bg-image: url('month2.jpg')">2nd Month</a>
+        <a href="3rd month/index.html" class="month-link month-with-bg" style="--bg-image: url('month3.jpg')">3rd Month</a>
+        <a href="4th month/month4.html" class="month-link month-with-bg" style="--bg-image: url('month4.jpg')">4th Month</a>
+
+        <div class="month-link locked">5th Month</div>
+        <div class="month-link locked">6th Month</div>
+
+        <div class="month-link locked">7th Month</div>
+        <div class="month-link locked">8th Month</div>
+        <div class="month-link locked">9th Month</div>
+
+        <div class="month-link locked">10th Month</div>
+        <div class="month-link locked">11th Month</div>
+        <div class="month-link locked">12th Month</div>
+    </div>
+</body>
+</html>
