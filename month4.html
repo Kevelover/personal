@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love, [Her Name]</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --text-color: #363636;
+            --primary-accent: #E7AAB4; /* Romantic Pink */
+            --secondary-accent: #c76db1;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: transparent; 
+            color: var(--text-color);
+            font-family: var(--font-body);
+            margin: 0;
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        h1, h2, h3 { font-family: var(--font-heading); color: var(--primary-accent); text-align: center; }
+        h2 { font-size: 2.5rem; margin-bottom: 40px; }
+        
+        .subtitle {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+            margin-top: -30px; 
+            margin-bottom: 30px;
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1; 
+            background: linear-gradient(135deg, #fde2e4, #f8cdda);
+        }
+        .hearts-container::before, .hearts-container::after {
+            content: '💖';
+            position: absolute;
+            font-size: 30vw;
+            opacity: 0.1;
+            filter: blur(5px); 
+            z-index: -1;
+        }
+        .hearts-container::before { top: -10vw; left: -10vw; }
+        .hearts-container::after { bottom: -10vw; right: -10vw; transform: rotate(45deg); }
+        .heart {
+            position: absolute;
+            top: -10vh;
+            font-size: 20px;
+            opacity: 0;
+            animation: fall 10s infinite linear;
+        }
+        
+        @keyframes fall {
+            0% { 
+                top: -10vh; 
+                opacity: 0; 
+                transform: rotate(0deg);
+            }
+            10% { 
+                opacity: 1; 
+            }
+            90% { 
+                opacity: 1; 
+            }
+            100% { 
+                top: 110vh; 
+                opacity: 0;
+                transform: rotate(720deg); 
+            }
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1502667859334-9754a15a9956?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero h1 { color: white; font-size: 4rem; margin: 0; }
+        
+        .hero p { 
+            font-size: 1.2rem; 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            max-width: 600px;
+            color: #EAEAEA; 
+        }
+        .scroll-down { 
+            position: absolute; 
+            bottom: 20px; 
+            font-size: 1rem; 
+            color: white; 
+            animation: bounce 2s infinite;
+            /* --- *** NEW: Added cursor pointer *** --- */
+            cursor: pointer;
+        }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+        
+        .timeline-content, .reason-card, .polaroid { background: white; }
+        .timeline { position: relative; padding: 20px 0; }
+        .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--primary-accent); transform: translateX(-50%); }
+        .timeline-item { position: relative; width: 50%; padding: 10px 40px; box-sizing: border-box; }
+        .timeline-item:nth-child(odd) { left: 0; text-align: right; }
+        .timeline-item:nth-child(even) { left: 50%; }
+        .timeline-item::after { content: ''; position: absolute; top: 25px; width: 16px; height: 16px; background: white; border: 3px solid var(--primary-accent); border-radius: 50%; z-index: 1; }
+        .timeline-item:nth-child(odd)::after { right: -8px; }
+        .timeline-item:nth-child(even)::after { left: -8px; }
+        .timeline-content { padding: 20px 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .timeline-content h3 { color: var(--text-color); text-align: left; }
+        .timeline-content p { text-align: left; }
+        .reasons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .reason-card { padding: 25px; border-radius: 8px; border-top: 5px solid var(--primary-accent); box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .reason-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .photo-gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .polaroid { padding: 15px 15px 30px 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+        .polaroid:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 10; }
+        .polaroid img { width: 250px; height: 250px; object-fit: cover; }
+        .polaroid:nth-child(1) { transform: rotate(-5deg); } .polaroid:nth-child(2) { transform: rotate(3deg); } .polaroid:nth-child(3) { transform: rotate(-2deg); } .polaroid:nth-child(4) { transform: rotate(5deg); }
+        .centered-section { text-align: center; }
+        iframe { border-radius: 12px; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .reveal-button { background-color: var(--secondary-accent); color: white; border: none; padding: 15px 30px; font-size: 1rem; font-family: var(--font-body); border-radius: 50px; cursor: pointer; transition: background-color 0.3s; }
+        .reveal-button:hover { background-color: #b83199; }
+        #final-message { background: #fff8f8; border-left: 5px solid var(--primary-accent); padding: 20px; margin-top: 20px; display: none; text-align: left; }
+        #backToTopBtn { display: none; position: fixed; bottom: 20px; right: 30px; z-index: 99; border: none; outline: none; background-color: var(--secondary-accent); color: white; cursor: pointer; padding: 10px; border-radius: 50%; font-size: 20px; width: 50px; height: 50px; line-height: 28px; transition: background-color 0.3s, opacity 0.3s; }
+        #backToTopBtn:hover { background-color: #db49ad; }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #fcb6c7, #f88da6);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: transform 0.2s, background 0.3s;
+        }
+        .back-link:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #f88da6, #fcb6c7);
+        }
+        
+        #back-to-main-link {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="hearts-container" class="hearts-container"></div>
+
+    <header class="hero">
+        <h1>Happy 4th Monthversary Baby! 💘🥰</h1>
+        <p>Every moment with you is a memory I don't want to forget. Fanny, you are the love of my life, I love you like you have no idea 💝</p>
+        <!-- *** MODIFIED: Added an ID for javascript to target *** -->
+        <div class="scroll-down" id="scroll-down-btn">Scroll Down ▾</div>
+    </header>
+
+    <main>
+        <!-- *** MODIFIED: Added an ID for the scroll-to target *** -->
+        <section class="container" id="our-journey">
+            <h2>Our Beautiful Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item"><div class="timeline-content"><h3>The Beginning 💌</h3><p>The moment I met you I knew you were special I just didn't know why. It wasn't just one thing, but spending time with you everyday is where I realized how amazing you are.</p></div></div>
+                <div class="timeline-item"><div class="timeline-content"><h3>Our Adventures ✈️</h3><p>From our biggest trip in Italy to just a simple walk in call, every moment with you is a treasure. Even though we don't have a lot of moments outside my favorite has to be sushi at night on the beach.</p></div></div>
+                <div class="timeline-item"><div class="timeline-content"><h3>A Special Moment ❤️</h3><p>A moment I'll never forget is when we stayed in call until 3am for the first time without realizing it. That moment, that day, was the first day I started to feel something...</p></div></div>
+                <div class="timeline-item"><div class="timeline-content"><h3>Dreams for the Future 🌟</h3><p>Thinking about our future together fills me with so much joy. I can't wait to do everything with you, living together, traveling, just finally being together. I just can't wait to have you by my side every single day.</p></div></div>
+            </div>
+        </section>
+
+        <!-- Reasons I Love You -->
+        <section class="container">
+            <h2>A Few Reasons I Love You</h2>
+            <p class="subtitle">(Just a few, because there are plenty to mention 🥰)</p>
+            <div class="reasons-grid">
+                <div class="reason-card">The way that you sound when you are excited about something, just you being happy makes me happy.</div>
+                <div class="reason-card">When you call me anything that you want, just any nickname. Call me anything every time my love.</div>
+                <div class="reason-card">Just you. I love every single thing about you. I wouldn't change anything.</div>
+                <div class="reason-card">Just talking to you. I love that. All day, everyday.</div>
+                <div class="reason-card">The sound of your laugh of courseeeeee 😽.</div>
+                <div class="reason-card">When we joke around about us (freaky jokes the most 🤭).</div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery -->
+        <section class="container">
+            <h2>A Gallery of Our Moments</h2>
+            <div class="photo-gallery">
+                <div class="polaroid"><img src="1.jpg" alt="Description of photo 1"></div>
+                <div class="polaroid"><img src="2.jpg" alt="Description of photo 2"></div>
+                <div class="polaroid"><img src="3.jpg" alt="Description of photo 3"></div>
+                <div class="polaroid"><img src="4.jpg" alt="Description of photo 4"></div>
+            </div>
+        </section>
+
+        <!-- Our Soundtrack -->
+        <section class="container centered-section">
+            <h2>Our Soundtrack</h2>
+            <!-- MODIFIED: Updated the text to match your screenshot -->
+            <p>The playlist I made out of your favorite songs 🥰💖</p>
+            
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1Nb0lfts8yhpW7h5hSlueD?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        
+        </section>
+
+        <!-- Final Message -->
+        <section class="container centered-section">
+            <h2>And One Last Thing...</h2>
+            <button id="reveal-btn" class="reveal-button" onclick="revealMessage()">Click here for a final surprise</button>
+            <div id="final-message">
+                <p><strong>To my dearest Fanny,</strong></p>
+                <p>It might only have been four months, but it feels like I've known you forever. Every single day with you has been a day that I am grateful for. You make my world a better place in so many ways. Thank you for being you, and for choosing to be with me, hermosa.</p>
+                <p>I'm so excited for everything that's to come in our lives.</p>
+                <p>All my love to you, princess,<br><strong>Your husband, Kevin.</strong></p>
+            </div>
+            
+            <a href="mainpage.html" id="back-to-main-link" class="back-link">⬅️ Back to Main Page</a>
+
+        </section>
+    </main>
+
+    <button onclick="scrollToTop()" id="backToTopBtn" title="Go to top">↑</button>
+
+    <script>
+        const container = document.getElementById('hearts-container');
+        const heartsCount = 20; 
+        for (let i = 0; i < heartsCount; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+            const heartEmojis = ['💖', '💕', '💗', '💝', '💓'];
+            heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            container.appendChild(heart);
+        }
+
+        const backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        
+        function revealMessage() {
+            var message = document.getElementById('final-message');
+            var revealBtn = document.getElementById('reveal-btn');
+            var backLink = document.getElementById('back-to-main-link');
+            
+            message.style.display = 'block';
+            revealBtn.style.display = 'none';
+            backLink.style.display = 'inline-block';
+            message.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        /* --- *** NEW: JAVASCRIPT FOR SCROLL DOWN BUTTON *** --- */
+        document.getElementById('scroll-down-btn').addEventListener('click', function() {
+            document.getElementById('our-journey').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
