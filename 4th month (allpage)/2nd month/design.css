@@ -1,0 +1,124 @@
+:root {
+    --d: 10s;
+  }
+  
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    background: #f8f6f1;
+    overflow: hidden;
+  }
+  
+  #hedlinecontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 60px;
+  }
+  
+  #shine {
+    font-size: 60px;
+    font-weight: bold;
+    color: rgba(255, 0, 102, 0.3);
+    z-index: 10;
+    background: linear-gradient(to right, #222 0%, #fff 50%, #222 100%);
+    background-size: 150px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-animation: shine 3s infinite;
+            animation: shine 3s infinite;
+    text-shadow: 0 0 0 rgba(233, 85, 189, 0.419);
+  }
+  
+  @keyframes shine {
+    0%, 10% {
+      background-position: -1000px;
+    }
+    20% {
+      background-position: top left;
+    }
+    90% {
+      background-position: top right;
+    }
+    100% {
+      background-position: 1000px;
+    }
+  }
+  
+  .gallery {
+    display: grid;
+    place-items: center;
+    width: 220px;
+    margin-left: 220px;
+    position: relative;
+  }
+  
+  .gallery > img {
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 10px solid #f2f2f2;
+    box-shadow: 0 0 4px #0007;
+    opacity: 0;
+    transform: translateX(0) rotate(0deg);
+    animation: slide var(--d) infinite;
+  }
+  
+  .gallery > img:nth-child(1) {
+    animation-delay: 0s;
+    --r: 16deg;
+  }
+  .gallery > img:nth-child(2) {
+    animation-delay: 2s;
+    --r: -1deg;
+  }
+  .gallery > img:nth-child(3) {
+    animation-delay: 4s;
+    --r: -19deg;
+  }
+  .gallery > img:nth-child(4) {
+    animation-delay: 6s;
+    --r: 6deg;
+  }
+  .gallery > img:nth-child(5) {
+    animation-delay: 8s;
+    --r: -8deg;
+  }
+  
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      z-index: 1;
+    }
+    5% {
+      opacity: 1;
+      z-index: 2;
+    }
+    20% {
+      opacity: 1;
+      transform: translateX(120%) rotate(var(--r));
+    }
+    25%, 100% {
+      opacity: 0;
+      transform: translateX(0) rotate(var(--r));
+      z-index: 1;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    #shine {
+      font-size: 22px;
+    }
+  
+    .gallery {
+      width: 150px;
+      margin-left: 60px;
+    }
+
+  }
+  

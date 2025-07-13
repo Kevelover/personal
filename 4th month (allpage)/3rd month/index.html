@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3 Months Together 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    /* --- NEW: Falling Hearts Background Styles (Self-Contained) --- */
+    .hearts-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1; /* This is the key: it places the container behind everything else */
+        background-color: #fde2e4; /* This creates the new pink background */
+    }
+
+    .heart {
+        position: absolute;
+        top: -10vh;
+        font-size: 20px;
+        opacity: 0;
+        animation: fall 10s infinite linear;
+    }
+
+    @keyframes fall {
+        0% { top: -10vh; opacity: 1; transform: rotate(0deg); }
+        100% { top: 110vh; opacity: 1; transform: rotate(720deg); }
+    }
+    /* --- End of new styles --- */
+
+
+    /* --- Your original, working styles (UNCHANGED) --- */
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      /* The gradient background will be covered by the hearts-container, which is okay. */
+      background: linear-gradient(to bottom, #ffe6f0, #fff);
+      color: #d6336c;
+      padding-bottom: 100px; 
+    }
+    header {
+      background-color: #ffccd5;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #d6336c;
+    }
+    section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    .gallery {
+      overflow-x: auto;
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      scroll-behavior: smooth;
+    }
+    .gallery img {
+      flex: 0 0 auto;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .timeline {
+      border-left: 3px solid #d6336c;
+      padding-left: 1rem;
+    }
+    .timeline-entry {
+      margin: 1rem 0;
+    }
+    .love-letter {
+      font-style: italic;
+      background: #fff0f5;
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .quiz {
+      margin-top: 2rem;
+      background: #ffeef8;
+      padding: 1rem;
+      border-radius: 1rem;
+    }
+    button {
+      background-color: #ff99ac;
+      border: none;
+      padding: 0.5rem 1rem;
+      color: white;
+      font-weight: bold;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .back-link-container {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+    }
+    .back-link {
+        display: inline-block;
+        padding: 12px 25px;
+        background: linear-gradient(135deg, #fcb6c7, #f88da6);
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: transform 0.2s, background 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .back-link:hover {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #f88da6, #fcb6c7);
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- NEW: HTML and SCRIPT for the hearts, placed at the top -->
+  <div class="hearts-container" id="hearts-container"></div>
+  <script>
+    const heartsContainer = document.getElementById('hearts-container');
+    if (heartsContainer) {
+        const heartsCount = 25;
+        for (let i = 0; i < heartsCount; i++) {
+            const heart = document.createElement('div'); heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 7) + 's';
+            heart.style.animationDelay = Math.random() * 7 + 's';
+            heart.style.fontSize = (Math.random() * 12 + 18) + 'px';
+            const heartEmojis = ['💖', '💕', '💗', '💝', '💓', '💞'];
+            heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heartsContainer.appendChild(heart);
+        }
+    }
+  </script>
+
+  <!-- Your original page content begins here, completely UNCHANGED -->
+  <header>
+    <h1>Happy 3rd Month Anniversary My Love 💞</h1>
+    <p><strong>Here's a little something to celebrate the 3 amazing months we've been together 💗</strong></p>
+    <p><strong>I love you baby 🥰💌</strong></p>
+  </header>
+
+  <section class="gallery">
+    <h2>Our photos together 💖📸</h2>
+    <img src="imagenes/image.jpg" alt="Us 1">
+    <img src="imagenes/image 2.jpg" alt="Us 2">
+    <img src="imagenes/image 3.jpg" alt="Us 3">
+    <img src="imagenes/image 4.jpg" alt="Us 4">
+    <img src="imagenes/image 5.jpg" alt="Us 5">
+    <img src="imagenes/image 6.jpg" alt="Us 6">
+    <img src="imagenes/image 7.jpg" alt="Us 7">
+    <img src="imagenes/image 8.jpg" alt="Us 8">
+    <img src="imagenes/image 9.jpg" alt="Us 9">
+    <img src="imagenes/image 10.jpg" alt="Us 10">
+    <img src="imagenes/image 11.jpg" alt="Us 11">
+    <img src="imagenes/image 12.jpg" alt="Us 12">
+  </section>
+
+  <section class="timeline">
+    <h2>Our Journey 🗓️</h2>
+    <div class="timeline-entry">
+      <strong>December 4, 2024:</strong> We met! 💞
+    </div>
+    <div class="timeline-entry">
+      <strong>March 14, 2025:</strong> We started dating 🥰
+    </div>
+    <div class="timeline-entry">
+      <strong>June 22, 2025:</strong> Our first trip together 💫💕
+    </div>
+    <div class="timeline-entry">
+      <strong>December, 2027:</strong> We will move in together!! 💝💑
+    </div>
+  </section>
+
+  <section>
+    <h2>A Letter for You 💌</h2>
+    <div class="love-letter">
+      <p>Every day I spend with you, I feel so grateful. I love spending time with you, I love hearing your voice, being with 
+        you, playing games, watching TV shows or movies. I'm so lucky to have you in my life, and even luckier to call you my 
+        girlfriend and if I'm lucky enough I'll call you my wife one day. You're an incredible and beautiful person, I love
+        the way you are with me and you make me incredibly happy, and I can't believe the the most beautiful woman on earth is mine. 
+        I'm so in love with you pretty, I want to spend every second of my life with you and do everything with you, I want to travel, I want to laugh, to cry, you 
+        are the love of my life and I want you to be the mother of my children. I love you like you have no idea, there are no words 
+        to express how much I feel for you, I can't wait to meet you so see you soon 😌❣️.</p>
+    </div>
+  </section>
+
+  <section class="quiz">
+    <h2>How well do you know us? 🤭</h2>
+    <div>
+      <p>1. What is the series we both love watching?</p>
+      <button class="reveal-btn" data-answer-id="answer1" data-answer-text='It is "The Rookie" 🚓💕'>Reveal Answer</button>
+      <p class="result" id="answer1"></p>
+    </div>
+    <div>
+      <p>2. Where are we gonna go for our first trip?</p>
+      <button class="reveal-btn" data-answer-id="answer2" data-answer-text="Romeee!! 💫🥰">Reveal Answer</button>
+      <p class="result" id="answer2"></p>
+    </div>
+    <div>
+      <p>3. Today we celebrate 3 months together but, can you guess how many days? 🤭</p>
+      <button class="reveal-btn" data-answer-id="answer3" data-answer-text="We have been together for a total of 92 days 💝">Reveal Answer</button>
+      <p class="result" id="answer3"></p>
+    </div>
+    <div>
+      <p>4. When I listen to this artist's songs, they remind me of you because you recommended them to me: </p>
+      <button class="reveal-btn" data-answer-id="answer4" data-answer-text='It is "The 1975", I still remember the day you did, I was so happy that the person I love was sharing music to me 😌❣️'>Reveal Answer</button>
+      <p class="result" id="answer4"></p>
+    </div>
+    <div>
+      <p>5. When did we first say "I love you" and who said it first? 😽💝</p>
+      <button class="reveal-btn" data-answer-id="answer5" data-answer-text="I said it first when you were saying goodbye to me because you had to go horse riding, it was two weeks after we started our relationship 💝🤭">Reveal Answer</button>
+      <p class="result" id="answer5"></p>
+    </div>
+  </section>
+
+  <div class="back-link-container">
+    <a href="/mainpage.html" class="back-link">⬅️ Back to Main Page</a>
+  </div>
+
+  <script>
+    // The quiz script remains unchanged
+    const revealButtons = document.querySelectorAll('.reveal-btn');
+    revealButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const answerId = button.dataset.answerId;
+        const answerText = button.dataset.answerText;
+        const resultElement = document.getElementById(answerId);
+        if (resultElement) {
+          resultElement.innerText = answerText;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
