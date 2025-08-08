@@ -6,138 +6,14 @@
   <link rel="icon" href="/icono.png">
   <title>3 months together 💖</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
-  <style>
-    /* --- NEW: Falling Hearts Background Styles (Self-Contained) --- */
-    .hearts-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        z-index: -1; /* This is the key: it places the container behind everything else */
-        background-color: #fde2e4; /* This creates the new pink background */
-    }
-
-    .heart {
-        position: absolute;
-        top: -10vh;
-        font-size: 20px;
-        opacity: 0;
-        animation: fall 10s infinite linear;
-    }
-
-    @keyframes fall {
-        0% { top: -10vh; opacity: 1; transform: rotate(0deg); }
-        100% { top: 110vh; opacity: 1; transform: rotate(720deg); }
-    }
-    /* --- End of new styles --- */
-
-
-    /* --- Your original, working styles (UNCHANGED) --- */
-    body {
-      margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      /* The gradient background will be covered by the hearts-container, which is okay. */
-      background: linear-gradient(to bottom, #ffe6f0, #fff);
-      color: #d6336c;
-      padding-bottom: 100px; 
-    }
-    header {
-      background-color: #ffccd5;
-      text-align: center;
-      padding: 3rem 1rem;
-    }
-    header h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
-      color: #d6336c;
-    }
-    section {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-    .gallery {
-      overflow-x: auto;
-      display: flex;
-      gap: 1rem;
-      padding: 1rem 0;
-      scroll-behavior: smooth;
-    }
-    .gallery img {
-      flex: 0 0 auto;
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 1rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    .timeline {
-      border-left: 3px solid #d6336c;
-      padding-left: 1rem;
-    }
-    .timeline-entry {
-      margin: 1rem 0;
-    }
-    .love-letter {
-      font-style: italic;
-      background: #fff0f5;
-      padding: 1rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    }
-    .quiz {
-      margin-top: 2rem;
-      background: #ffeef8;
-      padding: 1rem;
-      border-radius: 1rem;
-    }
-    button {
-      background-color: #ff99ac;
-      border: none;
-      padding: 0.5rem 1rem;
-      color: white;
-      font-weight: bold;
-      border-radius: 0.5rem;
-      cursor: pointer;
-    }
-    .result {
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-    .back-link-container {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-    }
-    .back-link {
-        display: inline-block;
-        padding: 12px 25px;
-        background: linear-gradient(135deg, #fcb6c7, #f88da6);
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        border-radius: 50px;
-        transition: transform 0.2s, background 0.3s;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-    .back-link:hover {
-        transform: scale(1.05);
-        background: linear-gradient(135deg, #f88da6, #fcb6c7);
-    }
-  </style>
+  <link rel="stylesheet" href="design.css">
+  <link rel="stylesheet" href="/hearts.css">
 </head>
 <body>
   
   <!-- NEW: HTML and SCRIPT for the hearts, placed at the top -->
   <div class="hearts-container" id="hearts-container"></div>
+  <script src="/script.js"></script>
   <script>
     const heartsContainer = document.getElementById('hearts-container');
     if (heartsContainer) {
