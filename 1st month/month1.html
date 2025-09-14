@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/icono.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/hearts.css">
+<title>1 month together 💖</title>
+
+</head>
+<body>
+    <div class="hearts-container" id="hearts-container"></div>
+    <script src="/script.js"></script>
+    <script>
+        // Hearts script (unchanged)
+        const container = document.getElementById('hearts-container');
+        if (container) {
+            const heartsCount = 20; for (let i = 0; i < heartsCount; i++) {
+                const heart = document.createElement('div'); heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+                const heartEmojis = ['💖', '💕', '💗', '💝', '💓'];
+                heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                container.appendChild(heart);
+            }
+        }
+    </script>
+    
+    <div class="container">
+        <h1>Our first month together 💖</h1>
+        <p class="intro-paragraph">
+            Well I know I didn't make a website the first month because I had the idea later soooo here it is 🥰, just a quick reminder of those first moments and late-night talks, and discovering so many wonderful things about you ❣️
+        </p>
+
+        <div class="gallery-grid">
+            <div class="photo-card" data-index="0">
+                <img src="confession.jpg" alt="The day I confessed 😭">
+                <p class="caption">The day I confessed 😭</p>
+            </div>
+            <div class="photo-card" data-index="1">
+                <img src="nosotros.jpg" alt="Just us 🥰">
+                <p class="caption">Just us 🥰</p>
+            </div>
+            <div class="photo-card" data-index="2">
+                <img src="repost.png" alt="WHEN YOU SAW THAT I REPOSTED LOVE THINGS 😭">
+                <p class="caption">WHEN YOU SAW THAT I REPOSTED LOVE THINGS 😭</p>
+            </div>
+        </div>
+
+        <a href="/index.html" class="back-link">⬅️ Back to Main Page</a>
+    </div>
+
+    <!-- MODIFIED: LIGHTBOX HTML STRUCTURE -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">×</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="lightbox-arrow lightbox-prev">‹</div>
+        <div class="lightbox-arrow lightbox-next">›</div>
+    </div>
+
+    <!-- MODIFIED: LIGHTBOX JAVASCRIPT -->
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const photoCards = document.querySelectorAll('.photo-card');
+        const closeBtn = document.querySelector('.lightbox-close');
+        const prevBtn = document.querySelector('.lightbox-prev');
+        const nextBtn = document.querySelector('.lightbox-next');
+
+        let currentIndex;
+        const images = Array.from(photoCards).map(card => card.querySelector('img').src);
+
+        function openLightbox(index) {
+            currentIndex = index;
+            lightboxImg.src = images[currentIndex];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            lightboxImg.src = images[currentIndex];
+        }
+
+        function showPrevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            lightboxImg.src = images[currentIndex];
+        }
+
+        photoCards.forEach(card => {
+            card.addEventListener('click', () => {
+                openLightbox(parseInt(card.dataset.index));
+            });
+        });
+
+        closeBtn.addEventListener('click', closeLightbox);
+        nextBtn.addEventListener('click', showNextImage);
+        prevBtn.addEventListener('click', showPrevImage);
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    showNextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrevImage();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
