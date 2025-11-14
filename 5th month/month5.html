@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap" rel="stylesheet">
+    <link rel="icon" href="/icono.png">
+    <title>5 months together 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hearts-container" id="hearts-container"></div>
+
+    <!-- **** POLAROIDS MOVED HERE **** -->
+    <div class="polaroid side-polaroid" id="polaroid-left">
+        <img src="1pol.jpg" alt="First polaroid picture">
+        <p class="caption">Us</p>
+    </div>
+    <div class="polaroid side-polaroid" id="polaroid-right">
+        <img src="2pol.jpg" alt="Second polaroid picture">
+        <p class="caption">More us!</p>
+    </div>
+
+
+    <!-- Main game content is now separate -->
+    <div id="game-container">
+        <div id="start-screen">
+            <!-- The h1 is now inside the start screen for better flow -->
+            <h1 id="main-title">Happy 5 Months My Love! 😘</h1>
+            <p class="text">More questions to celebrate us! 🥰</p>
+            <button id="start-button">Let's Go!</button>
+        </div>
+
+        <!-- These are correctly hidden again -->
+        <div id="question-container" class="hidden">
+            <h2 id="question-text"></h2>
+            <input type="text" id="answer-input" placeholder="Your answer here...">
+            <button id="submit-button">Submit</button>
+            <p id="feedback"></p>
+        </div>
+
+        <div id="final-message" class="hidden">
+            <h2>Congratulations!</h2>
+            <p>My love! You have answered all the questions and unlocked my message 🥰</p>
+            <div class="message-box">
+                <p>My pretty Fanny,</p>
+                <p>This past 5 months have been the best in my life, since the moment I met you everything has been better, you have no idea how happy you make me and how much I love you. You are the best thing in my life hermosa. I love you with all my heart and I can't wait to live together 😌</p>
+                <p>Happy 5th monthversary preciosa! 💞</p>
+                <p>With all my love,</p>
+                <p>Kevin (your husband 🤭)</p>
+            </div>
+            <button id="continue-button">Continue...</button>
+        </div>
+
+        <div id="more-content" class="hidden">
+            <h2>More and more pictures of usss 💕</h2>
+            <p>I love being with you</p>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="image1.jpg" alt="A photo of us">
+                    <p class="caption">Our first picture togetherrrr 🤭</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="image2.jpg" alt="Another photo of us">
+                    <p class="caption">I love holding your hand 💝</p>
+                </div>
+                 <div class="gallery-item">
+                    <img src="image3.jpg" alt="A third photo of us">
+                    <p class="caption">I love this picture of you.</p>
+                </div>
+            </div>
+            <p class="final-words">We need to take more photos so I can use more for the next months HAHAHA ❤️</p>
+        </div>
+    </div>
+    <div class="back-button-container">
+        <a href="/index.html" class="back-link">⬅️ Back to Main Page</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

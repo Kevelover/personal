@@ -1,0 +1,145 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    color: rgb(79, 84, 84);
+    font-size: 150px;
+    font-weight: 750;
+    text-shadow: 3px 3px 5px black;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32vh;
+    /* --- NEW FIX (Part 1) --- */
+    /* This makes the entire container "invisible" to mouse clicks,
+       allowing clicks to pass through to the hearts behind it. */
+    pointer-events: none;
+}
+
+/* --- NEW FIX (Part 2) --- */
+/* This re-enables clicks ONLY for the anchor (link) elements
+   inside the container, so your links still work perfectly. */
+.center a {
+    pointer-events: auto;
+}
+
+    .back-link {
+        display: inline-block; padding: 12px 25px;
+        background: linear-gradient(135deg, #47862e, #319627); color: white;
+        text-decoration: none; font-weight: bold; border-radius: 50px;
+        transition: transform 0.2s, background 0.3s;
+    }
+    .back-link:hover {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #1f641a, #04340e);
+    }
+
+
+@media (max-width:910px) {
+    h1 {
+        font-size: 100px;
+    }
+}
+
+@media (max-width:610px) {
+    h1 {
+        font-size: 80px;
+    }
+}
+
+@media (max-width:500px) {
+    h1 {
+        font-size: 48px;
+    }
+}
+
+.colorful-text span:nth-child(1) {
+    color: red;
+}
+.colorful-text span:nth-child(2) {
+    color: yellow;
+}
+.colorful-text span:nth-child(3) {
+    color: red;
+}
+
+.swedish-text span:nth-child(1) {
+    color: blue;
+}
+.swedish-text span:nth-child(2) {
+    color: yellow;
+}
+.swedish-text span:nth-child(3) {
+    color: blue;
+}
+
+.english-text span:nth-child(1) {
+    color: red;
+}
+.english-text span:nth-child(2) {
+    color: white;
+}
+.english-text span:nth-child(3) {
+    color: blue;
+}
+
+.swedish-text {
+    display: flex;
+}
+
+.swedish-text span:nth-child(1) {
+    margin-right: 10px; 
+}
+
+.swedish-text span:nth-child(2),
+.swedish-text span:nth-child(3) {
+    margin-right: 0;
+}
+
+.side-photo {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 220px; 
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: -1; 
+}
+
+.side-photo.left {
+    left: 40px;
+}
+.side-photo.right {
+    right: 40px;
+}
+
+@media (max-width: 1000px) {
+    .side-photo {
+        display: none;
+    }
+}
+
+.back-link-container {
+    position: fixed; bottom: 30px; left: 50%;
+    transform: translateX(-50%); z-index: 1000;
+}
+.back-link {
+    display: inline-block; padding: 12px 25px;
+    background: linear-gradient(135deg, #fcb6c7, #f88da6);
+    color: white; text-decoration: none; font-weight: bold;
+    font-family: 'Segoe UI', sans-serif; border-radius: 50px;
+    transition: transform 0.2s, background 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.back-link:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #f88da6, #fcb6c7);
+}
+
+.heart {
+    z-index: 20;
+}
