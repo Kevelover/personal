@@ -1,0 +1,143 @@
+/* General Page Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Fading pink background */
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fbc2eb 100%);
+    background-attachment: fixed; 
+    overflow-x: hidden; /* Prevents side-to-side scrolling */
+    color: #4a152b; /* Dark pink/purple text for contrast */
+}
+
+/* Falling Hearts Background Area */
+#hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Makes sure you can click the buttons through the hearts */
+    z-index: 0;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    top: -10%;
+    /* The animation ensures they fall straight down and rotate */
+    animation: fall linear infinite; 
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        /* 110vh pushes them completely off the bottom of the screen */
+        transform: translateY(110vh) rotate(360deg); 
+    }
+}
+
+/* Glassmorphism Section Panels */
+.glass-panel {
+    position: relative;
+    z-index: 1; /* Keeps the text above the falling hearts */
+    background: rgba(255, 255, 255, 0.45); /* Semi-transparent white */
+    backdrop-filter: blur(8px); /* The frosted glass blur effect */
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    margin: 50px auto;
+    padding: 40px;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(216, 27, 96, 0.15); /* Soft pink shadow */
+}
+
+h1 {
+    color: #d81b60;
+    font-size: 2.5em;
+    margin-top: 0;
+}
+
+h2 {
+    color: #c2185b;
+}
+
+/* Interactive Box Styling */
+.interactive-box {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+#message-display {
+    font-size: 1.3em;
+    font-weight: bold;
+    min-height: 60px;
+    color: #ad1457;
+}
+
+button {
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+}
+
+button:hover {
+    background-color: #f50057;
+    transform: scale(1.05); /* Slight pop effect when hovering */
+}
+
+/* Gallery / Future Section Styling */
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.love-photo {
+    width: 250px;       /* You can adjust the width */
+    height: 250px;      /* You can adjust the height */
+    object-fit: cover;  /* This crops the photo to fit the square without stretching it */
+    border-radius: 15px;
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.love-photo:hover {
+    transform: scale(1.05) rotate(2deg); /* A cute little pop effect when she hovers over them */
+}
+
+.footer-text {
+    margin-top: 40px;
+    color: #d81b60;
+}
+
+ .back-link-container {
+        position: fixed; bottom: 30px; left: 50%;
+        transform: translateX(-50%); z-index: 1000;
+    }
+    .back-link {
+        display: inline-block; padding: 12px 25px;
+        background: linear-gradient(135deg, #fcb6c7, #f88da6);
+        color: white; text-decoration: none; font-weight: bold;
+        font-family: 'Segoe UI', sans-serif; border-radius: 50px;
+        transition: transform 0.2s, background 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .back-link:hover {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #f88da6, #fcb6c7);
+    } 

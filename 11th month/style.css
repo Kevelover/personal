@@ -1,0 +1,166 @@
+/* General Page Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif; /* A more romantic, classic font */
+    /* Radial pink fading background */
+    background: radial-gradient(circle at center, #ffe6ea 0%, #ffb3c6 50%, #ff8fa3 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    color: #590d22;
+}
+
+/* Strictly Vertical Falling Hearts */
+#hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    top: -10vh; /* Start above the screen */
+    /* Animation guarantees straight down movement with rotation */
+    animation: dropDown linear infinite;
+}
+
+@keyframes dropDown {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(115vh) rotate(360deg);
+    }
+}
+
+/* Layout for the Scrapbook Cards */
+.layout-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Space between sections */
+}
+
+/* Distinct Solid Sections */
+.scrapbook-card {
+    background-color: #fff0f3;
+    border: 4px solid #ff4d6d;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 8px 8px 0px #ff4d6d; /* Hard shadow for a pop-out look */
+    transition: transform 0.3s ease;
+}
+
+.scrapbook-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Staggered alignments to look different from the 10-month page */
+.card-left {
+    margin-right: 10%;
+    border-radius: 30px 30px 30px 5px;
+}
+
+.card-right {
+    margin-left: 10%;
+    border-radius: 30px 30px 5px 30px;
+}
+
+.card-center {
+    text-align: center;
+}
+
+/* Valentine's Specific Styling */
+.valentines-theme {
+    background-color: #ffccd5;
+    border-color: #c9184a;
+    box-shadow: 8px 8px 0px #c9184a;
+}
+
+h1, h2 {
+    color: #c9184a;
+    margin-top: 0;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+
+.signature {
+    font-style: italic;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 20px;
+}
+
+.decoration {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Interactive Coupon Grid */
+.coupon-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.coupon {
+    background-color: #ff758f;
+    color: white;
+    width: 200px;
+    height: 100px;
+    border: 3px dashed #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.coupon:hover {
+    background-color: #ff4d6d;
+}
+
+/* Class added via JS when clicked */
+.coupon.revealed {
+    background-color: #fff;
+    color: #c9184a;
+    border: 3px solid #ff4d6d;
+    transform: scale(1.05);
+}
+
+ .back-link-container {
+        position: fixed; bottom: 30px; left: 50%;
+        transform: translateX(-50%); z-index: 1000;
+    }
+    .back-link {
+        display: inline-block; padding: 12px 25px;
+        background: linear-gradient(135deg, #fcb6c7, #f88da6);
+        color: white; text-decoration: none; font-weight: bold;
+        font-family: 'Segoe UI', sans-serif; border-radius: 50px;
+        transition: transform 0.2s, background 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .back-link:hover {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #f88da6, #fcb6c7);
+    } 
