@@ -1,0 +1,503 @@
+/* --- Estilos Generales --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden; /* Evita scroll horizontal con los corazones */
+    background-color: #fff0f3;
+}
+
+h1, h2, .signature {
+    font-family: 'Dancing Script', cursive;
+}
+
+/* --- Contenedor de corazones --- */
+#hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Permite hacer clic a través de ellos */
+    z-index: 9999;
+}
+
+.heart {
+    position: absolute;
+    top: -10vh;
+    display: inline-block;
+    animation: fallAndRotate linear infinite;
+}
+
+/* Animación de caída y rotación */
+@keyframes fallAndRotate {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* --- SECCIÓN 1: Inicio --- */
+.hero-section {
+    height: 100vh;
+    /* PON AQUÍ EL NOMBRE DE TU IMAGEN DESCARGADA */
+    background-image: url('fondo2.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto Parallax */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.glass-box {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    color: #d81b60;
+}
+
+.glass-box h1 { font-size: 4rem; margin-bottom: 10px; }
+.glass-box p { font-size: 1.5rem; }
+
+/* --- SECCIÓN 2: Recuerdos (Patrón de lunares) --- */
+.memories-section {
+    min-height: 100vh;
+    padding: 5rem 2rem;
+    /* Fondo rosa con patrón de lunares sutiles usando CSS */
+    background-color: #ffe4e1;
+    background-image: radial-gradient(#ffb6c1 20%, transparent 20%),
+                      radial-gradient(#ffb6c1 20%, transparent 20%);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    text-align: center;
+}
+
+.memories-section h2 {
+    font-size: 3.5rem;
+    color: #c2185b;
+    margin-bottom: 3rem;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.photo-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.photo-card:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.photo-card img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.photo-card p {
+    margin-top: 15px;
+    color: #880e4f;
+    font-weight: 600;
+}
+
+/* --- SECCIÓN 3: Mensaje (Degradado animado) --- */
+.message-section {
+    min-height: 100vh;
+    padding: 5rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Fondo rosa con degradado dinámico */
+    background: linear-gradient(45deg, #ff9a9e, #fecfef, #ffdde1);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.letter-paper {
+    background: #fffdfd;
+    max-width: 600px;
+    padding: 4rem;
+    border-radius: 15px;
+    box-shadow: inset 0 0 20px rgba(255, 182, 193, 0.5), 0 15px 30px rgba(0,0,0,0.1);
+    border: 2px dashed #ffb6c1;
+}
+
+.letter-paper h2 {
+    font-size: 3rem;
+    color: #d81b60;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.letter-paper p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #4a4a4a;
+    text-align: justify;
+}
+
+.letter-paper .signature {
+    text-align: right;
+    font-size: 2rem;
+    color: #c2185b;
+    margin-top: 30px;
+}
+
+/* --- Animaciones de Scroll (Aparición dinámica) --- */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- SECCIÓN 4: Razones (Fondo rosa muy suave) --- */
+.reasons-section {
+    min-height: 100vh;
+    padding: 5rem 2rem;
+    background-color: #fff0f5; /* Un tono rosa lavanda muy claro */
+    text-align: center;
+}
+
+.reasons-section h2 {
+    font-size: 3.5rem;
+    color: #d81b60;
+    margin-bottom: 3rem;
+}
+
+.reasons-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre cada razón */
+}
+
+.reason-card {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(216, 27, 96, 0.1); /* Sombra rosada */
+    color: #880e4f;
+    font-size: 1.2rem;
+    text-align: left;
+    border-left: 6px solid #ffb6c1; /* Una línea rosa decorativa a la izquierda */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reason-card strong {
+    color: #d81b60;
+    font-size: 1.4rem;
+    margin-right: 10px;
+}
+
+/* Efecto al pasar el ratón por encima */
+.reason-card:hover {
+    transform: translateX(10px); /* Se mueve un poco a la derecha */
+    box-shadow: 0 6px 20px rgba(216, 27, 96, 0.2);
+}
+
+/* --- QUIZ CARD STYLES --- */
+.quiz-card {
+    background: white;
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(216, 27, 96, 0.15);
+    border: 3px dashed #ffb6c1; /* Cute dashed pink border */
+    text-align: center;
+}
+
+.quiz-card h3 {
+    color: #d81b60;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#reason-guess {
+    padding: 12px;
+    font-size: 1.2rem;
+    border: 2px solid #ffb6c1;
+    border-radius: 8px;
+    width: 120px;
+    text-align: center;
+    outline: none;
+    color: #880e4f;
+    transition: border-color 0.3s ease;
+}
+
+#reason-guess:focus {
+    border-color: #d81b60;
+}
+
+#check-btn {
+    background-color: #d81b60;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#check-btn:hover {
+    background-color: #ad1457;
+    transform: scale(1.05);
+}
+
+.error-msg {
+    color: #d81b60;
+    margin-top: 15px;
+    font-size: 1rem;
+    min-height: 20px; /* Keeps the card from jumping around */
+    font-weight: bold;
+}
+
+/* Texto bajo las fotos */
+.photo-caption {
+    margin-top: 40px;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: #c2185b;
+    background: rgba(255, 255, 255, 0.6);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+/* Sección del Juego */
+.game-section {
+    min-height: 80vh;
+    padding: 5rem 2rem;
+    background-color: #ffdde1;
+    text-align: center;
+}
+
+.game-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.game-box input {
+    padding: 10px;
+    width: 80%;
+    margin: 20px 0;
+    border: 2px solid #ffb6c1;
+    border-radius: 10px;
+    outline: none;
+}
+
+.game-box button {
+    padding: 10px 25px;
+    background: #d81b60;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.game-box button:hover { background: #ad1457; }
+
+#game-feedback { margin-top: 15px; font-weight: bold; }
+
+.hidden-message {
+    display: none; /* Se activa con JS */
+    margin-top: 30px;
+    padding: 20px;
+    background: #fdf2f4;
+    border: 2px solid #d81b60;
+    border-radius: 15px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Importar una tipografía más bonita */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@600&display=swap');
+
+/* Título principal del juego */
+.game-section h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem; /* más grande */
+    color: #d81b60; /* rosa fuerte */
+    margin-bottom: 30px; /* espacio debajo */
+    letter-spacing: 1px;
+}
+
+/* Tipografía general del cuadro del juego */
+.game-container {
+    font-family: 'Poppins', sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Texto dentro del juego */
+.game-container p {
+    font-size: 1.1rem;
+    color: #444;
+}
+
+/* Input */
+.game-box input {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    padding: 10px;
+    width: 80%;
+    margin: 20px 0;
+    border: 2px solid #ffb6c1;
+    border-radius: 10px;
+    outline: none;
+}
+
+/* Botón verificar */
+.game-box button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 25px;
+    background: #d81b60;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.game-box button:hover {
+    background: #ad1457;
+    transform: scale(1.05); /* efecto bonito */
+}
+
+/* Feedback */
+#game-feedback {
+    margin-top: 15px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+#language-name {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+#language-name span {
+    color: #d81b60;
+}
+
+/* Texto misterioso debajo del juego */
+.mystery-note {
+    margin-top: 30px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    opacity: 0;
+    animation: fadeInUp 2s ease forwards;
+    animation-delay: 1s;
+}
+
+.mystery-note p:first-child {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.soon-text {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #d81b60;
+    margin-top: 5px;
+    animation: glowText 2s ease-in-out infinite alternate;
+}
+
+/* Animación de aparición */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animación de brillo romántico */
+@keyframes glowText {
+    from {
+        text-shadow: 0 0 5px rgba(216, 27, 96, 0.2);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(216, 27, 96, 0.6);
+    }
+}
+
+ .back-link-container {
+        position: fixed; bottom: 30px; left: 50%;
+        transform: translateX(-50%); z-index: 1000;
+    }
+    .back-link {
+        display: inline-block; padding: 12px 25px;
+        background: linear-gradient(135deg, #fcb6c7, #f88da6);
+        color: white; text-decoration: none; font-weight: bold;
+        font-family: 'Segoe UI', sans-serif; border-radius: 50px;
+        transition: transform 0.2s, background 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .back-link:hover {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #f88da6, #fcb6c7);
+    } 
